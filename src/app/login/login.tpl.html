@@ -1,0 +1,34 @@
+﻿<div ng-controller="LoginCtrl">
+    <div id="wrapper">
+        <div id="login-container">
+            <section id="login">
+                <div class="login_inner">
+                    <h1>Entrance</h1>
+                    <form name="form" ng-submit="form.$valid && login()" role="form" novalidate>
+                        <fieldset>
+                            <input type="text" name="username" id="username"value="Username" focus="true" placeholder="UserName" ng-model="username" ng-minlength="3" ng-maxlength="8"required/>
+                            <span ng-show="form.username.$dirty && form.username.$error.required" ng-class="'red'">Username is required</span>
+                            <span ng-show="form.username.$error.minlength" ng-class="'red'">Username is too short.</span>
+                            <span ng-show="form.username.$error.maxlength" ng-class="'red'">Username is too long.</span>
+                        </fieldset>
+                        <fieldset>
+                            <input type="password" value="Password" name="password"  placeholder="Password" ng-model="password" ng-minlength="3" ng-maxlength="8"required/>
+                            <span ng-show="form.password.$dirty && form.password.$error.required" ng-class="'red'">Password is required</span>
+                            <span ng-show="form.password.$error.minlength" ng-class="'red'">password is too short.</span>
+                            <span ng-show="form.password.$error.maxlength" ng-class="'red'">Password is too long.</span>
+                        </fieldset>
+                        <fieldset>
+        <span ng-show="(form.username.$dirty) || (form.password.$dirty)" ng-bind="validationMessage" ng-class="'red'">
+                        </fieldset>
+                        <fieldset>
+                            <input type="submit"  value="Login" ng-disabled="form.$invalid"/>
+                        </fieldset>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
