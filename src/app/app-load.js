@@ -21,7 +21,6 @@ require.config({
 	'angular':'../../vendor/angular/angular',
 	'FileSaver':'../../vendor/file-saver/FileSaver',
 	'cfp.loadingBar':'../../vendor/angular-loading-bar/src/loading-bar',
-//	'XLSX':'../../vendor/ExportJS/xlsx.core.min',
     'ngJsonExportExcel':'../../vendor/json-export-excel/dest/json-export-excel.min',
 	'angular.sanitize' : '../../vendor/angular-sanitize/angular-sanitize.min',
 	'angular-min':'../../vendor/angular/angular.min',
@@ -39,8 +38,6 @@ require.config({
     "shim": {
 	'angular': {'exports': 'angular', deps: ['jquery']},
 	'ui.router': { deps: ['angular'] },
-	//'alasql':{ deps: ['angular'] },
-//	'XLSX':{ deps: ['angular'] },
     'ngJsonExportExcel':{ deps: ['angular'] },
     'cfp.loadingBar':{ deps: ['angular'] },
 	'angular.cookies': { deps: ['angular'] },
