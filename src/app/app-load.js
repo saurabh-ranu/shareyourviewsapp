@@ -2,7 +2,7 @@ var defaultConfig={
 startupFile: 'src/app/app-start-web.js',
 isNative:false,
 	app_modules: ['ui.router','ui.bootstrap','ngJsonExportExcel','cfp.loadingBar','templates-app','templates-common','angularUtils.directives.dirPagination','login','ngCookies'],
-	app_scripts: ['jquery','angular','ngJsonExportExcel','FileSaver','cfp.loadingBar','angular.resource','angular.sanitize','ui.router','angular.cookies','ui.bootstrap.tpls','bootstrap','angular.pagination','templates-app','templates-common', 'login/login_module'],
+	app_scripts: ['jquery','angular','ngJsonExportExcel','FileSaver','cfp.loadingBar','angular.resource','angular.sanitize','ui.router','angular.cookies','ui.bootstrap.tpls','bootstrap','angular.pagination','templates-app','templates-common', 'authentication/authentication-http-service', 'authentication/base64-service', 'login/login_module'],
 	login_modules: [ 'ui.router', 'cfp.loadingBar','templates-app','templates-common'],
     login_scripts: ['jquery', 'angular','cfp.loadingBar']
 };

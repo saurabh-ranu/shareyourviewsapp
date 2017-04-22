@@ -2,7 +2,7 @@ define(appConfig.app_scripts, function (jquery, angular) {
     'use strict';
     var app = angular.module('shareyourviewsapp', appConfig.app_modules);
     app.service('AuthenticationService', appservice.authenticationHttpService)
-
+    app.service('Base64', appservice.base64Service)
         .controller('AppCtrl', ['$rootScope', '$scope', '$http', '$state',
             function ($rootScope, $scope, $http, $state) {
             }
