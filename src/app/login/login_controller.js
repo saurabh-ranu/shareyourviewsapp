@@ -1,6 +1,6 @@
-define(appConfig.login_scripts, function($,angular,cfpLoadingBar) {
-	angular.module('login', appConfig.login_modules)
-	.controller('LoginCtrl', ['$rootScope', '$scope', '$timeout','$http', '$state','cfpLoadingBar',
+define([], function() {
+	'use strict';
+	return ['$rootScope', '$scope', '$timeout','$http', '$state','cfpLoadingBar',
                 function ($rootScope, $scope, $timeout,$http, $state,cfpLoadingBar) {
             $scope.login = function()
   {
@@ -37,6 +37,6 @@ define(appConfig.login_scripts, function($,angular,cfpLoadingBar) {
 		};
             
                 }
-                 ]);
+                 ];
 });
 	

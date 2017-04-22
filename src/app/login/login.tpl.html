@@ -1,4 +1,4 @@
-﻿<div ng-controller="LoginCtrl">
+﻿<div ng-controller="LoginController">
     <div id="wrapper">
         <div id="login-container">
             <section id="login">
@@ -19,6 +19,7 @@
                         </fieldset>
                         <fieldset>
         <span ng-show="(form.username.$dirty) || (form.password.$dirty)" ng-bind="validationMessage" ng-class="'red'">
+            </span>
                         </fieldset>
                         <fieldset>
                             <input type="submit"  value="Login" ng-disabled="form.$invalid"/>

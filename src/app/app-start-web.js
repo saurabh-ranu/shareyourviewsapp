@@ -5,7 +5,7 @@ define([
     'angular'],function (require,app,angular) {
 	
 	require(['domReady!'], function (document) {
-		angular.bootstrap(document, ['mymain']);
+		angular.bootstrap(document, ['shareyourviewsapp']);
     },function (err) {
  alert("bootstrap"+err);
  });
