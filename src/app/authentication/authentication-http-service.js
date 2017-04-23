@@ -8,25 +8,32 @@ define([],function(){
         this.login = function(credentials){
             var loginDeferred = $q.defer();
             var authdata = Base64.encode('trusted-app' + ':' + 'secret');
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-            $http.post({
+            var _headers = {
+                'Authorization': 'Basic ' + authdata,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            alert('authdata'+authdata);
+            //$http.defaults.headers.common['Authorization'] = 'Basic dHJ1c3RlZC1hcHA6c2VjcmV0';
+            $http({
                 method: 'POST',
                 url: 'http://localhost:8080/ShareYourViewsServices/oauth/token?grant_type=password&username=1&password=saurabh',
-                data: JSON.stringify(credentials),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                //data: JSON.stringify(credentials),
+                headers: _headers,
                 responseType: 'json',
                 crossDomain:true
+
             }).success(function (response) {
+                alert('response'+JSON.stringify(response));
                 loginDeferred.resolve(response);
-            }).error(function(response){
-                loginDeferred.reject(response);
-            })
+            }).error(function(error){
+                alert('error'+JSON.stringify(error));
+                loginDeferred.reject(error);
+            });
 
 
-            return loginDeferred.promise();
-        }
+            return loginDeferred.promise;
+        };
 
         this.request = function(config) {
 
@@ -41,15 +48,15 @@ define([],function(){
 
         this.getCache = function(key) {
             return $window.localStorage.getItem(key);
-        }
+        };
 
         this.removeFromCache = function(key) {
             $window.localStorage.removeItem(key);
-        }
+        };
 
         this.setCache = function(key, value) {
             $window.localStorage.setItem(key, value);
-        }
+        };
 
 
 

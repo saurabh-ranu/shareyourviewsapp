@@ -1,9 +1,9 @@
 /**
  * Created by Saurabh.srivastava on 2/21/2017.
  */
-define([],function(){
+define([], function () {
     'use strict';
-    appservice.base64Service = ['$http', '$q', 'Base64', function($http, $q, Base64){
+    appservice.base64Service = ['$http', '$q',  function ( $http, $q ) {
 
         var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
@@ -12,7 +12,6 @@ define([],function(){
             var chr1, chr2, chr3 = "";
             var enc1, enc2, enc3, enc4 = "";
             var i = 0;
-
             do {
                 chr1 = input.charCodeAt(i++);
                 chr2 = input.charCodeAt(i++);
@@ -39,7 +38,7 @@ define([],function(){
             } while (i < input.length);
 
             return output;
-        }
+        };
 
         this.decode = function (input) {
             var output = "";
@@ -81,7 +80,7 @@ define([],function(){
             } while (i < input.length);
 
             return output;
-        }
+        };
 
 
     }];
