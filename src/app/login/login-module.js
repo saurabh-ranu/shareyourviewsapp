@@ -5,7 +5,7 @@ define(appConfig.login_scripts, function(jquery, angular){
     'use strict';
 return angular.module('login', appConfig.login_modules)
     .controller('LoginController',['$scope','$injector',function($scope, $injector){
-        require([ './login/login_controller' ], function(loginController) {
+        require([ './login-controller' ], function(loginController) {
             $injector.invoke(loginController, this, {
                 '$scope' : $scope
             });

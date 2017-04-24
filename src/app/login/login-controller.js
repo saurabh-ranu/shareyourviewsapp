@@ -13,8 +13,9 @@ define([], function () {
                 cfpLoadingBar.start();
 
                 AuthenticationService.login(this.credentials).then(function (response) {
-                    alert('response' + response);
+                    alert('response' + JSON.stringify(response));
                     console.log('response' + response);
+                    $state.go('home');
                 });
 
                 /*Webservice.loginWebservice(this.loginInfo).then(function (response) {
