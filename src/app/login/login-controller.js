@@ -1,9 +1,8 @@
 define([], function () {
     'use strict';
-    return ['$rootScope', '$scope', '$timeout', '$http', '$state', 'cfpLoadingBar', 'AuthenticationService',
-        function ($rootScope, $scope, $timeout, $http, $state, cfpLoadingBar, AuthenticationService) {
+    return ['$rootScope', '$scope', '$timeout', '$http', '$state', 'cfpLoadingBar', 'AuthenticationHttpService',
+        function ($rootScope, $scope, $timeout, $http, $state, cfpLoadingBar, AuthenticationHttpService) {
             $scope.login = function () {
-                alert('inlogin');
                 this.credentials = {
 
                     "userName": $scope.username,
@@ -12,11 +11,15 @@ define([], function () {
                 };
                 cfpLoadingBar.start();
 
-                AuthenticationService.login(this.credentials).then(function (response) {
-                    alert('response' + JSON.stringify(response));
-                    console.log('response' + response);
-                    $state.go('home');
+                AuthenticationHttpService.login(this.credentials).then(function (response) {
+                    console.log('response' + JSON.stringify(response));
+                    alert($scope.username+ ' '+ $scope.password);
+                    cfpLoadingBar.complete();
+                    $state.go('homes');
+                },function(error){
+                    cfpLoadingBar.complete();
                 });
+
 
                 /*Webservice.loginWebservice(this.loginInfo).then(function (response) {
                  $timeout( function(){

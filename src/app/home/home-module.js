@@ -6,7 +6,7 @@ define(appConfig.home_scripts, function(jquery, angular, dashBoardService){
     return angular.module('home', appConfig.login_modules)
         .service('DashBoardService',dashBoardService)
         .controller('DashBoardController',['$scope','$injector',function($scope, $injector){
-            require([ './dashboard-controller' ], function(dashboardController) {
+            require([ 'home/dashboard-controller' ], function(dashboardController) {
                 $injector.invoke(dashboardController, this, {
                     '$scope' : $scope
                 });

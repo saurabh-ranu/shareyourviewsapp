@@ -16,8 +16,14 @@
 
 
 </head>
-<body ui-view="root">
+<body>
+
+<div ng-if="islogOutVisible">
+<input type="button" value="Log Out" ng-click="logout()">
+  </div>
+<div ui-view="root">
 
 
+</div>
 </body>
 </html>

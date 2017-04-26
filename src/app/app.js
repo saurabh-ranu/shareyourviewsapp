@@ -4,11 +4,21 @@ define(appConfig.app_scripts, function (jquery, angular) {
     app.service('Base64', appservice.base64Service);
     app.service('AuthenticationHttpService', appservice.authenticationHttpService);
     app.service('AuthenticationHttpInterceptor', appservice.authenticationHttpInterceptor)
-        .controller('AppCtrl', ['$rootScope', '$scope', '$http', '$state',
-            function ($rootScope, $scope, $http, $state, $httpProvider) {
-                $rootScope.$on('unauthorized', function() {
+        .controller('AppCtrl', ['$rootScope', '$scope', '$http', '$state', 'AuthenticationHttpService',
+            function ($rootScope, $scope, $http, $state, AuthenticationHttpService) {
+               $rootScope.$on('unauthorized', function() {
+                    AuthenticationHttpService.deleteAccessToken();
                     $state.go('logins');
                 });
+
+                $scope.islogOutVisible = AuthenticationHttpService.isAuthenticated();
+
+                $scope.logout = function(){
+                    alert('Taking you out!');
+                    AuthenticationHttpService.deleteAccessToken();
+                    $state.go('logins');
+                };
+
 
 
             }
@@ -25,14 +35,15 @@ define(appConfig.app_scripts, function (jquery, angular) {
                     }
                 }
             });
-            $stateProvider.state('home', {
+            $stateProvider.state('homes', {
                 url: "/home",
                 views: {
                     'root': {
-                        templateUrl: 'login/home.tpl.html'
+                        templateUrl: 'home/home.tpl.html'
                     }
                 }
             });
+            //$injector.get('AuthenticationHttpInterceptor');
             $httpProvider.interceptors.push('AuthenticationHttpInterceptor');
 
         }]);

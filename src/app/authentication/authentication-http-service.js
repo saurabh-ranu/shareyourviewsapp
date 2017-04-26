@@ -3,8 +3,9 @@
  */
 define([], function () {
     'use strict';
-    appservice.authenticationHttpService = ['$http', '$q', 'Base64', function ($http, $q, Base64) {
+    appservice.authenticationHttpService = ['$http', '$q', 'Base64', '$window', '$rootScope', '$state', function ($http, $q, Base64, $window, $rootScope) {
 
+        var that = this;
         var accessTokenCacheKey = 'access_token';
         var refreshTokenCacheKey = 'refresh_token';
         var HTTP_HEADERS = {
@@ -13,6 +14,7 @@ define([], function () {
         };
 
         this.login = function (credentials) {
+            that.deleteAccessToken();
             var loginDeferred = $q.defer();
             var authdata = Base64.encode('trusted-app' + ':' + 'secret');
             var _headers = {
@@ -20,7 +22,6 @@ define([], function () {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             };
-            alert('authdata' + authdata);
             //$http.defaults.headers.common['Authorization'] = 'Basic dHJ1c3RlZC1hcHA6c2VjcmV0';
             $http({
                 method: 'POST',
@@ -31,10 +32,9 @@ define([], function () {
                 crossDomain: true
 
             }).success(function (response) {
-                alert('response' + JSON.stringify(response));
+                that.setAccessToken(response.access_token);
                 loginDeferred.resolve(response);
             }).error(function (error) {
-                alert('error' + JSON.stringify(error));
                 loginDeferred.reject(error);
             });
 
@@ -45,7 +45,7 @@ define([], function () {
         this.handleRequest = function (requestConfig) {
             requestConfig.headers = requestConfig.headers || {};
 
-            if (!this.isAuthenticated()) {
+            if (!that.isAuthenticated()) {
                 return requestConfig;
             }
 
@@ -53,7 +53,7 @@ define([], function () {
             //return requestConfig;
         };
 
-        this.addHttpHeaderToRequest = function addHttpHeaderToRequest(requestConfig) {
+        this.addHttpHeaderToRequest = function (requestConfig) {
             requestConfig.headers = requestConfig.headers || {};
             requestConfig.headers[HTTP_HEADERS.ACCESS_TOKEN] = 'Bearer '+this.getAccessToken();
 
@@ -61,8 +61,18 @@ define([], function () {
         };
 
         this.handleResponseError = function (rejection) {
+            alert('rejection'+rejection.status);
             if (rejection.status === 401) {
+                alert('You are not Authorize, Please Try Again');
                 $rootScope.$broadcast('unauthorized');
+                return $q.reject(rejection);
+            }
+
+            if (rejection.status === 0) {
+                //alert('You are not Authorize, Please Try Again');
+                //$rootScope.$broadcast('unauthorized');
+                return $q.reject(rejection);
+
             }
             return rejection;
         };
@@ -79,29 +89,30 @@ define([], function () {
             $window.localStorage.setItem(key, value);
         };
 
-        this.setAccessToken = function setAccessToken(accessToken) {
-            setCache(accessTokenCacheKey, accessToken);
+        this.setAccessToken = function (accessToken) {
+            that.setCache(accessTokenCacheKey, accessToken);
         };
 
-        this.deleteAccessToken = function deleteAccessToken() {
-            removeFromCache(accessTokenCacheKey);
+        this.deleteAccessToken = function () {
+            that.removeFromCache(accessTokenCacheKey);
         };
 
-        this.setRefreshToken = function setRefreshToken(refreshToken) {
-            setCache(refreshTokenCacheKey, refreshToken);
+        this.setRefreshToken = function (refreshToken) {
+            that.setCache(refreshTokenCacheKey, refreshToken);
         };
 
-        this.deleteRefreshToken = function deleteRefreshToken() {
-            removeFromCache(refreshTokenCacheKey);
+        this.deleteRefreshToken = function () {
+            that.removeFromCache(refreshTokenCacheKey);
         };
 
-        this.isAuthenticated = function isAuthenticated() {
-            return (!!this.getAccessToken());
+        this.isAuthenticated = function () {
+            return (!!that.getAccessToken());
         };
 
-        this.getAccessToken = function getAccessToken() {
-            return getCache(accessTokenCacheKey);
+        this.getAccessToken = function () {
+            return that.getCache(accessTokenCacheKey);
         };
+
 
     }];
 

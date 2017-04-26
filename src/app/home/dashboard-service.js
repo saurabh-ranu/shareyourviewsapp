@@ -5,7 +5,7 @@ define([], function () {
     'use strict';
     return ['$http', '$q', 'Base64', function ($http, $q) {
 
-        this.dashBoard = function () {
+            this.dashBoard = function () {
             var dashboardDeferred = $q.defer();
             var _headers = {
                 'Accept': 'application/json',
@@ -20,7 +20,6 @@ define([], function () {
                 crossDomain: true
 
             }).success(function (response) {
-                alert('response' + JSON.stringify(response));
                dashboardDeferred.resolve(response);
             }).error(function (error) {
                 alert('error' + JSON.stringify(error));

@@ -3,11 +3,14 @@
  */
 define([], function () {
     'use strict';
-    appservice.authenticationHttpInterceptor = ['AuthenticationHttpService', function (AuthenticationHttpService) {
-        this.request =  angular.bind(AuthenticationHttpService, AuthenticationHttpService.handleRequest);
-            this.responseError = angular.bind(AuthenticationHttpService, AuthenticationHttpService.handleResponseError);
+    appservice.authenticationHttpInterceptor = ['$injector', function ($injector) {
 
+        this.request = function(config) {
+            return $injector.get('AuthenticationHttpService').handleRequest(config);
+        };
+        this.responseError = function(config) {
+            return $injector.get('AuthenticationHttpService').handleResponseError(config);
+        };
     }];
-
     return appservice.authenticationHttpInterceptor;
 });
