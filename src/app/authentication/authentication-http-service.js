@@ -25,7 +25,7 @@ define([], function () {
             //$http.defaults.headers.common['Authorization'] = 'Basic dHJ1c3RlZC1hcHA6c2VjcmV0';
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/ShareYourViewsServices/oauth/token?grant_type=password&username=1&password=saurabh',
+                url: 'http://localhost:8081/ShareYourViewsServices/oauth/token?grant_type=password&username='+credentials.userName+'&password='+credentials.password,
                 //data: JSON.stringify(credentials),
                 headers: _headers,
                 responseType: 'json',
@@ -61,10 +61,14 @@ define([], function () {
         };
 
         this.handleResponseError = function (rejection) {
-            alert('rejection'+rejection.status);
+            //alert('rejection'+rejection.status);
             if (rejection.status === 401) {
                 alert('You are not Authorize, Please Try Again');
                 $rootScope.$broadcast('unauthorized');
+                return $q.reject(rejection);
+            }
+
+            if (rejection.status === 400) {
                 return $q.reject(rejection);
             }
 

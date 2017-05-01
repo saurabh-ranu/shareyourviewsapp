@@ -6,7 +6,8 @@ define(appConfig.app_scripts, function (jquery, angular) {
     app.service('AuthenticationHttpInterceptor', appservice.authenticationHttpInterceptor)
         .controller('AppCtrl', ['$rootScope', '$scope', '$http', '$state', 'AuthenticationHttpService',
             function ($rootScope, $scope, $http, $state, AuthenticationHttpService) {
-               $rootScope.$on('unauthorized', function() {
+                $scope.islogOutVisible = false;
+                $rootScope.$on('unauthorized', function() {
                     AuthenticationHttpService.deleteAccessToken();
                     $state.go('logins');
                 });
