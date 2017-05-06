@@ -7,7 +7,8 @@ define(appConfig.app_scripts, function (jquery, angular) {
         .controller('AppCtrl', ['$rootScope', '$scope', '$http', '$state', 'AuthenticationHttpService',
             function ($rootScope, $scope, $http, $state, AuthenticationHttpService) {
                 $scope.islogOutVisible = false;
-                $rootScope.$on('unauthorized', function() {
+                $scope.pageTitle = "Share Your Views";
+               $rootScope.$on('unauthorized', function() {
                     AuthenticationHttpService.deleteAccessToken();
                     $state.go('logins');
                 });

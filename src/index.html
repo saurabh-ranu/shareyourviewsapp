@@ -18,9 +18,10 @@
 </head>
 <body>
 
+<div ng-if="islogOutVisible">
 
-<input ng-if="islogOutVisible" type="button" value="Log Out" ng-click="logout()">
-
+<input type="button" value="Log Out" ng-click="logout()" class="animate-if">
+  </div>
 <div ui-view="root">
 
 
