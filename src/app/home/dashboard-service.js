@@ -13,7 +13,7 @@ define([], function () {
             };
            $http({
                 method: 'GET',
-                url: 'http://localhost:8081/ShareYourViewsServices/PostHandle/getAllPost',
+                url: 'http://localhost:8080/ShareYourViewsServices/PostHandle/getAllPost',
                 //data: JSON.stringify(credentials),
                 headers: _headers,
                 responseType: 'json',
