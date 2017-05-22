@@ -25,7 +25,7 @@ define([], function () {
             //$http.defaults.headers.common['Authorization'] = 'Basic dHJ1c3RlZC1hcHA6c2VjcmV0';
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/ShareYourViewsServices/oauth/token?grant_type=password&username='+credentials.username+'&password='+credentials.password,
+                url: 'http://localhost:8081/ShareYourViewsServices/oauth/token?grant_type=password&username='+credentials.username+'&password='+credentials.password,
                 //data: JSON.stringify(credentials),
                 headers: _headers,
                 responseType: 'json',

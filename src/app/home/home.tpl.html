@@ -5,30 +5,33 @@
                 <div class="post">
                     <h1>Share Your Views</h1>
 
+                    <div class="post_inner">
+                        <h3>Post whatever you want to share...</h3>
+                        <div><textarea rows="4" cols="90" id="postText" ng-model="postText" name="postText">
+
+                        </textarea>
+                            </div>
+                        <div><input type="button" value = "POST" ng-click="submitPost();"></div>
+                    </div>
+
                     <h2>Recent Posts</h2>
 
                     <div class="post_inner" ng-repeat="post in postList">
-                        <div><b>id :</b> {{post.id}}</div>
+                        <div><b><a href="#"> {{post.user.userName}}</a></b></div><br>
+
+                        <div> {{post.description}}</div>
                         <br/>
 
-                        <div><b>Subject :</b> {{post.subject}}</div>
-                        <br/>
-
-                        <div><b>Description :</b> {{post.description}}</div>
-                        <br/>
-
-                        <div><b>Description :</b> {{post.description}}</div>
-                        <br/>
 
                         <div><b>Comments :</b></div>
-                        <div ng-repeat="comment in post.comments">
+                        <div class="comment_inner" ng-repeat="comment in post.comments">
 
-                            <div><b>id :</b> {{comment.id}}</div>
+                            <div><b><a href="#">{{comment.user.userName}}</a></b></div>
+
+                            <div><b> {{comment.comment}}</b></div>
                             <br/>
-
-                            <div><b>Subject :</b> {{comment.comment}}</div>
+                            <div> {{comment.description}}</div>
                             <br/>
-
 
                         </div>
                     </div>
