@@ -15,5 +15,9 @@
     "angular-resource": "~1.2.18",
     "angular-utils-pagination": "~0.3.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "json-export-excel": "ng-json-export-excel#^1.0.2",
+    "angular-loading-bar": "^0.9.0",
+    "angular-sanitize": "^1.6.4"
+  }
 }
