@@ -18,6 +18,7 @@
   "dependencies": {
     "json-export-excel": "ng-json-export-excel#^1.0.2",
     "angular-loading-bar": "^0.9.0",
-    "angular-sanitize": "^1.6.4"
+    "angular-sanitize": "^1.6.4",
+    "angular-file-upload": "^2.5.0"
   }
 }
