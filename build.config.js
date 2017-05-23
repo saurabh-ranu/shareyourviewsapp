@@ -86,7 +86,9 @@ module.exports = {
       'vendor/json-export-excel/dest/json-export-excel.js',
       'vendor/json-export-excel/dest/json-export-excel.min.js',
       'vendor/file-saver/FileSaver.js',
-      'vendor/angular-loading-bar/src/loading-bar.js'
+      'vendor/angular-loading-bar/src/loading-bar.js',
+      'vendor/ng-file-upload/ng-file-upload.min.js',
+      'vendor/angular-file-upload/dist/angular-file-upload.min.js'
     ],
     css: [
     ],
