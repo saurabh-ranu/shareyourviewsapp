@@ -10,6 +10,13 @@
                         <div><textarea rows="4" cols="90" id="postText" ng-model="postText" name="postText">
 
                         </textarea>
+
+                            </div>
+                        <div ngf-select="upload($file)" ngf-drop="upload($file)" ng-model="files" ngf-model-invalid="invalidFiles" ngf-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj" ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)" ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)" ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-max-files="maxFiles" ngf-ignore-invalid="ignoreInvalid" ngf-run-all-validations="runAllValidations" ngf-allow-dir="allowDir" class="drop-box" ngf-drop-available="dropAvailable">Select File
+                            <span ng-show="dropAvailable"> or Drop File</span>
+                        </div>
+                        <div>
+                        <img ngf-thumbnail="file || '/thumb.jpg'">
                             </div>
                         <div><input type="button" value = "POST" ng-click="submitPost();"></div>
                     </div>

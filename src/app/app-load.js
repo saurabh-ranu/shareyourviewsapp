@@ -1,12 +1,12 @@
 var defaultConfig={
 startupFile: 'src/app/app-start-web.js',
 isNative:false,
-	app_modules: ['ui.router','ui.bootstrap','ngJsonExportExcel','cfp.loadingBar','templates-app','templates-common','angularUtils.directives.dirPagination'/*,'authentication'*/, 'login','ngCookies','home'],
-	app_scripts: ['jquery','angular','ngJsonExportExcel','FileSaver','cfp.loadingBar','angular.resource','angular.sanitize','ui.router','angular.cookies','ui.bootstrap.tpls','bootstrap','angular.pagination','templates-app','templates-common', 'authentication/authentication-http-service', 'authentication/base64-service', 'authentication/authentication-http-interceptor-service',/*'authentication/authentication-module',*/ 'login/login-module', 'home/home-module'],
+	app_modules: ['ui.router','ui.bootstrap','ngJsonExportExcel','cfp.loadingBar','angularFileUpload','ngFileUpload','templates-app','templates-common','angularUtils.directives.dirPagination'/*,'authentication'*/, 'login','ngCookies','home'],
+	app_scripts: ['jquery','angular','ngJsonExportExcel','FileSaver','cfp.loadingBar','angularFileUpload','ngFileUpload','angular.resource','angular.sanitize','ui.router','angular.cookies','ui.bootstrap.tpls','bootstrap','angular.pagination','templates-app','templates-common', 'authentication/authentication-http-service', 'authentication/base64-service', 'authentication/authentication-http-interceptor-service',/*'authentication/authentication-module',*/ 'login/login-module', 'home/home-module'],
 	login_modules: [ 'ui.router', 'cfp.loadingBar','templates-app','templates-common'],
     login_scripts: ['jquery', 'angular','cfp.loadingBar'],
-	home_modules: [ 'ui.router', 'cfp.loadingBar','templates-app','templates-common'],
-	home_scripts: ['jquery', 'angular', 'home/dashboard-service', 'home/dashboard-controller']
+	home_modules: [ 'ui.router', 'cfp.loadingBar','templates-app','templates-common','angularFileUpload','ngFileUpload'],
+	home_scripts: ['jquery', 'angular', 'home/dashboard-service', 'home/dashboard-controller','angularFileUpload','ngFileUpload']
 };
 
 
@@ -24,6 +24,8 @@ require.config({
 	'FileSaver':'../../vendor/file-saver/FileSaver',
 	'cfp.loadingBar':'../../vendor/angular-loading-bar/src/loading-bar',
     'ngJsonExportExcel':'../../vendor/json-export-excel/dest/json-export-excel.min',
+	'angularFileUpload':'../../vendor/angular-file-upload/dist/angular-file-upload.min',
+	'ngFileUpload':'../../vendor/ng-file-upload/ng-file-upload.min',
 	'angular.sanitize' : '../../vendor/angular-sanitize/angular-sanitize.min',
 	'angular-min':'../../vendor/angular/angular.min',
 	'angular.cookies': '../../vendor/angular-cookies/angular-cookies.min',
@@ -51,8 +53,9 @@ require.config({
 	'ui.bootstrap.tpls': { deps: ['angular'] },
     'app-start-web':{ deps: ['angular'] },
     'templates-app':{ deps: ['angular'] },
-    'templates-common':{ deps: ['angular']
-     }
+    'templates-common':{ deps: ['angular']},
+	'angularFileUpload':{ deps: ['angular']},
+	'ngFileUpload':{ deps: ['angular']}
 	},
 	
 	deps: [appConfig.startupFile]

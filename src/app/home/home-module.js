@@ -3,7 +3,7 @@
  */
 define(appConfig.home_scripts, function(jquery, angular, dashBoardService){
     'use strict';
-    return angular.module('home', appConfig.login_modules)
+    return angular.module('home', appConfig.home_modules)
         .service('DashBoardService',dashBoardService)
         .controller('DashBoardController',['$scope','$injector',function($scope, $injector){
             require([ 'home/dashboard-controller' ], function(dashboardController) {
