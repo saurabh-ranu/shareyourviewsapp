@@ -4,8 +4,8 @@ var define2 = define([], function () {
         function ($rootScope, $scope, $timeout, $http, $state, cfpLoadingBar, DashBoardService, Upload) {
 
             $scope.register = function(){
-                
-            }
+
+            };
 
 
         }
