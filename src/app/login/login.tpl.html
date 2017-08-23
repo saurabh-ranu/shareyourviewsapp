@@ -1,35 +1,50 @@
-﻿<div ng-controller="LoginController">
-    <div id="wrapper">
-        <div id="login-container">
-            <section id="login">
-                <div class="login_inner">
-                    <h1>Share Your Views</h1>
-                    <form name="form" ng-submit="form.$valid && login()" role="form" novalidate>
-                        <fieldset>
-                            <input type="text" name="username" id="username"value="Username" focus="true" placeholder="UserName" ng-model="username" ng-minlength="3" ng-maxlength="8"required/>
-                            <span ng-show="form.username.$dirty && form.username.$error.required" ng-class="'red'">Username is required</span>
-                            <span ng-show="form.username.$error.minlength" ng-class="'red'">Username is too short.</span>
-                            <span ng-show="form.username.$error.maxlength" ng-class="'red'">Username is too long.</span>
-                        </fieldset>
-                        <fieldset>
-                            <input type="password" value="Password" name="password"  placeholder="Password" ng-model="password" ng-minlength="3" ng-maxlength="8"required/>
-                            <span ng-show="form.password.$dirty && form.password.$error.required" ng-class="'red'">Password is required</span>
-                            <span ng-show="form.password.$error.minlength" ng-class="'red'">password is too short.</span>
-                            <span ng-show="form.password.$error.maxlength" ng-class="'red'">Password is too long.</span>
-                        </fieldset>
-                        <fieldset>
+﻿<header>
+    <h1>Share Your Views</h1>
+</header>
+<section>
+    <div id="container_demo">
+        <div id="wrapper" ng-controller="LoginController">
+            <div id="login" class="animate form">
+
+
+                <form name="form" ng-submit="form.$valid && login()" role="form" novalidate>
+                    <h1>Log in</h1>
+
+                    <p>
+                        <input type="text" name="username" id="username" value="Username" focus="true"
+                               placeholder="UserName"
+                               ng-model="username" ng-minlength="3" ng-maxlength="8" required/>
+                        <span ng-show="form.username.$dirty && form.username.$error.required" ng-class="'red'">Username is required</span>
+                        <span ng-show="form.username.$error.minlength" ng-class="'red'">Username is too short.</span>
+                        <span ng-show="form.username.$error.maxlength" ng-class="'red'">Username is too long.</span>
+                    </p>
+
+                    <p>
+                        <input type="password" value="Password" name="password" placeholder="Password"
+                               ng-model="password"
+                               ng-minlength="3" ng-maxlength="8" required/>
+                        <span ng-show="form.password.$dirty && form.password.$error.required" ng-class="'red'">Password is required</span>
+                        <span ng-show="form.password.$error.minlength" ng-class="'red'">password is too short.</span>
+                        <span ng-show="form.password.$error.maxlength" ng-class="'red'">Password is too long.</span>
+                    </p>
+
+                    <p>
         <span ng-show="(form.username.$dirty) || (form.password.$dirty)" ng-bind="validationMessage" ng-class="'red'">
             </span>
-                        </fieldset>
-                        <fieldset>
-                            <input type="submit"  value="Login" ng-disabled="form.$invalid"/>
-                        </fieldset>
-                    </form>
-                </div>
-            </section>
+                    </p>
+
+                    <p>
+                        <input type="submit" value="Login" ng-disabled="form.$invalid"/>
+                    </p>
+
+
+                    <p class="change_link">
+                        Not a member yet ?
+                        <a href="#/registration" class="to_register">Join us</a>
+                    </p>
+                </form>
+            </div>
+
         </div>
     </div>
-</div>
-
-
-
+</section>

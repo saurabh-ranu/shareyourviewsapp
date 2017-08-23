@@ -12,6 +12,14 @@ define(appConfig.home_scripts, function(jquery, angular, dashBoardService){
                 });
             });
         }
-        ]);
+        ])
+        .controller('RegistrationController',['$scope','$injector',function($scope, $injector){
+            require([ 'home/registration-controller' ], function(registrationController) {
+                $injector.invoke(registrationController, this, {
+                    '$scope' : $scope
+                });
+            });
+        }
+            ]);
 
 });

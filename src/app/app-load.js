@@ -63,6 +63,17 @@ require.config({
 
 var appservice = function () {
 };
+
+appservice.serverURL = 'localhost';
+appservice.port = '8089';
+appservice.isServiceAvailable = true;
+
+appservice.getServiceUrl = function(serviceName){
+	if(appservice.isServiceAvailable){
+		return "http://" + appservice.serverURL + ":" + appservice.port + "/ShareYourViewsServices/" + serviceName;
+	}
+};
+
 //define(['require','angular'],function(){
 //require([appConfig.startupFile], function(angular,demo){
 //},function (err) {

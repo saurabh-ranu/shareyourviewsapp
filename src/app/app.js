@@ -45,6 +45,14 @@ define(appConfig.app_scripts, function (jquery, angular) {
                     }
                 }
             });
+        $stateProvider.state('registration', {
+            url: "/registration",
+            views: {
+                'root': {
+                    templateUrl: 'home/registration.tpl.html'
+                }
+            }
+        });
             //$injector.get('AuthenticationHttpInterceptor');
             $httpProvider.interceptors.push('AuthenticationHttpInterceptor');
 

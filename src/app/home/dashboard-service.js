@@ -13,7 +13,7 @@ define([], function () {
             };
             $http({
                 method: 'GET',
-                url: 'http://localhost:8081/ShareYourViewsServices/PostHandle/getAllPost',
+                url: 'http://localhost:8089/ShareYourViewsServices/PostHandle/getAllPost',
                 //data: JSON.stringify(credentials),
                 headers: _headers,
                 responseType: 'json',
@@ -47,7 +47,7 @@ define([], function () {
             };
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/ShareYourViewsServices/PostHandle/post',
+                url: 'http://localhost:8089/ShareYourViewsServices/PostHandle/post',
                 data: JSON.stringify(postData),
                 headers: _headers,
                 responseType: 'application/json',
