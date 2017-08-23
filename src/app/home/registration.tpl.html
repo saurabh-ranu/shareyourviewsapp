@@ -1,10 +1,13 @@
 ﻿<div id="wrapper">
     <div id="register" class="animate form" ng-controller="RegistrationController">
-        <form  autocomplete="on">
+        <form ng-submit="form.$valid && login()" autocomplete="on">
             <h1> Sign up </h1>
             <p>
                 <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
-                <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690">
+                <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder=""  ng-model="username" ng-minlength="3" ng-maxlength="8">
+                <span ng-show="form.username.$dirty && form.username.$error.required" ng-class="'red'">Username is required</span>
+                <span ng-show="form.username.$error.minlength" ng-class="'red'">Username is too short.</span>
+                <span ng-show="form.username.$error.maxlength" ng-class="'red'">Username is too long.</span>
             </p>
             <p>
                 <label for="emailsignup" class="youmail" data-icon="e"> Your email</label>
@@ -12,12 +15,33 @@
             </p>
             <p>
                 <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-                <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO">
+                <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="Password"
+                       ng-model="password"
+                       ng-minlength="3" ng-maxlength="8" required>
+                <span ng-show="form.password.$dirty && form.password.$error.required" ng-class="'red'">Password is required</span>
+                <span ng-show="form.password.$error.minlength" ng-class="'red'">password is too short.</span>
+                <span ng-show="form.password.$error.maxlength" ng-class="'red'">Password is too long.</span>
             </p>
             <p>
                 <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
                 <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO">
+                <span ng-show="form.password.$dirty && form.password.$error.required" ng-class="'red'">Password is required</span>
+                <span ng-show="form.password.$error.minlength" ng-class="'red'">password is too short.</span>
+                <span ng-show="form.password.$error.maxlength" ng-class="'red'">Password is too long.</span>
             </p>
+            <p>
+                <label for="usernamesignup" class="uname" data-icon="u">Full Name</label>
+                <input id="name" name="name" required="required" type="text" placeholder="mysuperusername690">
+            </p>
+            <p>
+                <label for="usernamesignup" class="uname" data-icon="u">Address</label>
+                <input id="address" name="name" required="required" type="text" placeholder="mysuperusername690">
+            </p>
+            <p>
+                <label for="usernamesignup" class="uname" data-icon="u">About You</label>
+                <input id="aboutYou" name="aboutYou" required="required" type="text" placeholder="mysuperusername690">
+            </p>
+
             <p class="signin button">
                 <input type="submit" value="Sign up">
             </p>
